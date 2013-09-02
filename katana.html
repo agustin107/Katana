@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<title></title>
+			<link rel="stylesheet" href="">
+			<script type="text/javascript" src="js/katana.js"></script>
+			<style type="text/css">
+				*{
+					margin: 0;
+					padding: 0;
+					box-sizing: border-box;
+				}
+
+				.header h1{
+					font-size: 32px;
+					width: 100%;
+					text-align: center;
+				}
+
+				.header nav{
+					width: 100%;
+					text-align: right;
+				}
+
+				.header nav ul li {
+					display: inline-block;
+				}
+
+				.header nav a {
+					text-decoration: none;
+					color: orange;
+				}
+
+				.header nav a:hover{
+					text-decoration: underline;
+				}
+
+				.wrapper{
+
+				}
+
+				.footer{
+
+				}
+			</style>
+	</head>
+	<body>
+		<div id="container">
+
+		</div>
+		<script type="text/javascript">
+				(function(){
+					//---HEADER ---//
+					var opch = {
+						"id" : "header",
+						"class" : "header"
+					}
+					var h = $.create("div", opch);
+					/*var opcNav = {
+						"id" : "nav"
+					}*/
+					var nav = $.create("nav");
+					//console.log(nav);
+					//Nav > ul > li
+					var ul = $.create("ul");
+					var menu = new Array("inicio", "contacto", "servicios");
+					for(var t =0; t<3; t++){
+						var li = $.create("li");
+						var a = $.create("a");
+						a.esc(menu[t]);
+						li.insert(a);
+						ul.insert(li);
+					}
+					nav.insert(ul);
+					h.insert(nav);
+					
+					//-	-- WRAPPER ---//
+					var opcw = {
+						"id" : "wrapper",
+						"class" : "wrapper"
+					}
+
+					//--- CREAMOS E INSERTAMOS EL DIV WRAPPER ---//
+					var w = $.create("div",opcw);
+
+					var form = $.create("form");
+					var opcion = {
+						"id": "nombre",
+						"placeholder": "Ingrese nombre"
+					}
+					var nombre = $.create("input", opcion);
+					var opcOb = {
+						"vacio": true,
+						"num": true,
+						"correo": true,
+						"max": 10
+					}
+
+					nombre.obliga(opcOb);
+
+					form.insert(nombre);
+					w.insert(form);
+
+
+
+					//--- FOOTER ---//
+					var opcf = {
+						"id" : "footer",
+						"class" : "footer"
+					}
+					
+					//--- CREAMOS E INSERTAMOS EL DIV HEADER ---//
+					var h = $.create("div",opch);
+
+					var h1 = $.create("h1");
+					h1.insert("Titulo");
+					h1.css({"color": "#ddd"});
+					h.insert(h1);
+
+					//--- CREAMOS E INSERTAMOS EL DIV FOOTER ---//
+					var f = $.create("div",opcf);
+
+					
+					$.get("container").insert(h);
+					$.get("container").insert(w);
+					$.get("container").insert(f);
+					$.get("container").insert(nav);
+				})();
+			</script>
+	</body>
+</html>
